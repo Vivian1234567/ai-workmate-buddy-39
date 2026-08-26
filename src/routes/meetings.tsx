@@ -13,12 +13,12 @@ import { AiDisclaimer } from "@/components/ai-disclaimer";
 export const Route = createFileRoute("/meetings")({
   head: () => ({
     meta: [
-      { title: "Meeting Notes Summarizer — AI Workplace" },
+      { title: "Meeting Notes Summarizer — Amukel AI Workspace" },
       {
         name: "description",
         content: "Turn long meeting transcripts into summaries, key points and action items.",
       },
-      { property: "og:title", content: "Meeting Notes Summarizer — AI Workplace" },
+      { property: "og:title", content: "Meeting Notes Summarizer — Amukel AI Workspace" },
       {
         property: "og:description",
         content: "Paste a transcript and get an editable summary with action items.",

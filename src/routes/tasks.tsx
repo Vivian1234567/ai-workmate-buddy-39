@@ -22,12 +22,12 @@ import { AiDisclaimer } from "@/components/ai-disclaimer";
 export const Route = createFileRoute("/tasks")({
   head: () => ({
     meta: [
-      { title: "AI Task Planner — AI Workplace" },
+      { title: "AI Task Planner — Amukel AI Workspace" },
       {
         name: "description",
         content: "Turn goals into a structured daily task list with priorities and deadlines.",
       },
-      { property: "og:title", content: "AI Task Planner — AI Workplace" },
+      { property: "og:title", content: "AI Task Planner — Amukel AI Workspace" },
       {
         property: "og:description",
         content: "Plan your day with AI-generated, editable tasks and priority tags.",

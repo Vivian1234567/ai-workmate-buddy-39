@@ -82,11 +82,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "AI Workplace Productivity Assistant" },
+      { title: "Amukel AI Workspace" },
       {
         name: "description",
         content:
-          "Automate emails, meeting notes, task planning and research with an AI workspace built for professionals.",
+          "Automate emails, meeting notes, task planning and research with Amukel AI Workspace built for professionals.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

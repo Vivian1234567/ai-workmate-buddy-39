@@ -12,12 +12,12 @@ import { AiDisclaimer } from "@/components/ai-disclaimer";
 export const Route = createFileRoute("/chat")({
   head: () => ({
     meta: [
-      { title: "AI Chatbot — AI Workplace" },
+      { title: "AI Chatbot — Amukel AI Workspace" },
       {
         name: "description",
         content: "Chat with your workplace AI assistant about emails, plans and research.",
       },
-      { property: "og:title", content: "AI Chatbot — AI Workplace" },
+      { property: "og:title", content: "AI Chatbot — Amukel AI Workspace" },
       {
         property: "og:description",
         content: "A focused chat workspace for everyday professional tasks.",

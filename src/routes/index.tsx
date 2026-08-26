@@ -18,16 +18,16 @@ import { PageHeader } from "@/components/page-header";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Dashboard — AI Workplace Productivity Assistant" },
+      { title: "Dashboard — Amukel AI Workspace" },
       {
         name: "description",
         content:
-          "Track emails generated, meetings summarized, tasks planned and hours saved in one AI productivity dashboard.",
+          "Track emails generated, meetings summarized, tasks planned and hours saved in the Amukel AI Workspace dashboard.",
       },
-      { property: "og:title", content: "Dashboard — AI Workplace Productivity Assistant" },
+      { property: "og:title", content: "Dashboard — Amukel AI Workspace" },
       {
         property: "og:description",
-        content: "Your AI workspace overview: emails, meetings, tasks and research.",
+        content: "Your Amukel AI Workspace overview: emails, meetings, tasks and research.",
       },
     ],
   }),
@@ -62,7 +62,7 @@ function Dashboard() {
     <div className="mx-auto flex max-w-6xl flex-col gap-6">
       <PageHeader
         title="Good afternoon, Amukelani"
-        description="Here's how your AI workspace is performing this week."
+        description="Here's how your Amukel AI Workspace is performing this week."
         action={
           <Button asChild className="shrink-0 transition-transform hover:-translate-y-0.5">
             <Link to="/chat">

@@ -13,12 +13,12 @@ import { AiDisclaimer } from "@/components/ai-disclaimer";
 export const Route = createFileRoute("/research")({
   head: () => ({
     meta: [
-      { title: "AI Research Assistant — AI Workplace" },
+      { title: "AI Research Assistant — Amukel AI Workspace" },
       {
         name: "description",
         content: "Ask a research question and get a structured answer with insights and sources.",
       },
-      { property: "og:title", content: "AI Research Assistant — AI Workplace" },
+      { property: "og:title", content: "AI Research Assistant — Amukel AI Workspace" },
       {
         property: "og:description",
         content: "Structured, sourced research summaries for busy professionals.",

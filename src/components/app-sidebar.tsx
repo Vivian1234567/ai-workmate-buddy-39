@@ -47,7 +47,7 @@ export function AppSidebar() {
           </span>
           {!collapsed && (
             <span className="truncate text-sm font-semibold tracking-tight">
-              AI Workplace
+              Amukel AI Workspace
             </span>
           )}
         </Link>
