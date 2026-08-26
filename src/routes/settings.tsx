@@ -19,12 +19,12 @@ import { PageHeader } from "@/components/page-header";
 export const Route = createFileRoute("/settings")({
   head: () => ({
     meta: [
-      { title: "Settings — AI Workplace" },
+      { title: "Settings — Amukel AI Workspace" },
       {
         name: "description",
         content: "Manage your profile, workspace defaults and AI preferences.",
       },
-      { property: "og:title", content: "Settings — AI Workplace" },
+      { property: "og:title", content: "Settings — Amukel AI Workspace" },
       {
         property: "og:description",
         content: "Profile, notifications and AI output preferences.",

@@ -20,12 +20,12 @@ import { AiDisclaimer } from "@/components/ai-disclaimer";
 export const Route = createFileRoute("/email")({
   head: () => ({
     meta: [
-      { title: "Smart Email Generator — AI Workplace" },
+      { title: "Smart Email Generator — Amukel AI Workspace" },
       {
         name: "description",
         content: "Generate professional, friendly or formal emails from a short brief.",
       },
-      { property: "og:title", content: "Smart Email Generator — AI Workplace" },
+      { property: "og:title", content: "Smart Email Generator — Amukel AI Workspace" },
       {
         property: "og:description",
         content: "Draft polished workplace emails in seconds with editable AI output.",
