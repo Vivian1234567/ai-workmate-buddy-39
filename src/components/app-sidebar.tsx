@@ -81,6 +81,18 @@ export function AppSidebar() {
               <SidebarMenuItem>
                 <SidebarMenuButton
                   asChild
+                  isActive={isActive("/pricing")}
+                  tooltip="Pricing"
+                >
+                  <Link to="/pricing" className="flex items-center gap-2">
+                    <CreditCard className="size-4 shrink-0" />
+                    <span className="truncate">Pricing</span>
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+              <SidebarMenuItem>
+                <SidebarMenuButton
+                  asChild
                   isActive={isActive("/settings")}
                   tooltip="Settings"
                 >
@@ -93,6 +105,7 @@ export function AppSidebar() {
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
+
       </SidebarContent>
     </Sidebar>
   );
