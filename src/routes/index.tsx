@@ -3,11 +3,13 @@ import {
   Mail,
   FileText,
   ListChecks,
-  Search,
-  MessageSquare,
+  Ticket,
+  TicketCheck,
+  Timer,
   Clock,
-  TrendingUp,
-  ArrowRight,
+  ArrowUpRight,
+  ShieldCheck,
+  CheckCircle2,
 } from "lucide-react";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -18,16 +20,16 @@ import { PageHeader } from "@/components/page-header";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Dashboard — Amukel AI Workspace" },
+      { title: "Dashboard — ServiceDesk AI IT Support Co-Pilot" },
       {
         name: "description",
         content:
-          "Track emails generated, meetings summarized, tasks planned and hours saved in the Amukel AI Workspace dashboard.",
+          "Track tickets resolved, open tickets, average response time and hours saved in the ServiceDesk AI helpdesk dashboard.",
       },
-      { property: "og:title", content: "Dashboard — Amukel AI Workspace" },
+      { property: "og:title", content: "Dashboard — ServiceDesk AI" },
       {
         property: "og:description",
-        content: "Your Amukel AI Workspace overview: emails, meetings, tasks and research.",
+        content: "Your IT helpdesk overview: tickets, response times and weekly productivity.",
       },
     ],
   }),
@@ -35,38 +37,47 @@ export const Route = createFileRoute("/")({
 });
 
 const stats = [
-  { label: "Emails Generated", value: "248", delta: "+12% this week", icon: Mail },
-  { label: "Meetings Summarized", value: "64", delta: "+8% this week", icon: FileText },
-  { label: "Tasks Planned", value: "412", delta: "+23% this week", icon: ListChecks },
-  { label: "Time Saved", value: "37h", delta: "+5h this week", icon: Clock },
+  { label: "Tickets Resolved Today", value: "18", delta: "+4 vs. yesterday", icon: TicketCheck },
+  { label: "Open Tickets", value: "12", delta: "3 breaching SLA soon", icon: Ticket },
+  { label: "Avg Response Time", value: "15 min", delta: "-3 min this week", icon: Timer },
+  { label: "Time Saved", value: "4.2 hrs", delta: "with AI drafting", icon: Clock },
 ];
 
 const quickActions = [
-  { title: "Smart Email Generator", url: "/email", icon: Mail, desc: "Draft a polished email in seconds" },
-  { title: "Meeting Notes Summarizer", url: "/meetings", icon: FileText, desc: "Turn transcripts into action items" },
-  { title: "AI Task Planner", url: "/tasks", icon: ListChecks, desc: "Break goals into a daily plan" },
-  { title: "AI Research Assistant", url: "/research", icon: Search, desc: "Get sourced answers fast" },
-  { title: "AI Chatbot", url: "/chat", icon: MessageSquare, desc: "Ask anything, anytime" },
+  { title: "Generate Ticket Update Email", url: "/email", icon: Mail },
+  { title: "Summarize Support Call", url: "/tickets", icon: FileText },
+  { title: "Plan My Shift", url: "/tasks", icon: ListChecks },
 ] as const;
 
 const activity = [
-  { title: "Client follow-up email generated", tag: "Email", time: "12 min ago" },
-  { title: "Q3 Planning sync summarized", tag: "Meeting", time: "1 hour ago" },
-  { title: "8 tasks planned for tomorrow", tag: "Tasks", time: "3 hours ago" },
-  { title: "Researched competitor pricing models", tag: "Research", time: "Yesterday" },
-  { title: "Chat session: onboarding checklist", tag: "Chat", time: "Yesterday" },
+  { title: "Sent password reset email for ticket INC123456", tag: "Email", time: "9 min ago" },
+  { title: "Summarized call — Outlook error 0x80040115", tag: "Summary", time: "42 min ago" },
+  { title: "Escalated ticket INC123457 to L2", tag: "Escalation", time: "1 hr ago" },
+  { title: "Closed ticket INC123455", tag: "Resolved", time: "2 hrs ago" },
+];
+
+const week = [
+  { day: "Mon", value: 12 },
+  { day: "Tue", value: 18 },
+  { day: "Wed", value: 15 },
+  { day: "Thu", value: 20 },
+  { day: "Fri", value: 18 },
+  { day: "Sat", value: 6 },
+  { day: "Sun", value: 3 },
 ];
 
 function Dashboard() {
+  const max = Math.max(...week.map((w) => w.value));
+
   return (
     <div className="mx-auto flex max-w-6xl flex-col gap-6">
       <PageHeader
-        title="Good afternoon, Amukelani"
-        description="Here's how your Amukel AI Workspace is performing this week."
+        title="Good morning, Support Agent — Ready to close tickets today?"
+        description="Here's your helpdesk snapshot for this shift."
         action={
           <Button asChild className="shrink-0 transition-transform hover:-translate-y-0.5">
-            <Link to="/chat">
-              Ask AI <ArrowRight className="ml-1 size-4" />
+            <Link to="/tasks">
+              Plan My Shift <ArrowUpRight className="ml-1 size-4" />
             </Link>
           </Button>
         }
@@ -76,18 +87,17 @@ function Dashboard() {
         {stats.map((s) => (
           <Card
             key={s.label}
-            className="rounded-2xl shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md"
+            className="rounded-xl bg-card shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md"
           >
             <CardContent className="flex items-start justify-between gap-3 p-5">
               <div className="min-w-0">
                 <p className="truncate text-sm text-muted-foreground">{s.label}</p>
-                <p className="mt-2 text-3xl font-semibold tracking-tight">{s.value}</p>
-                <p className="mt-1 flex items-center gap-1 text-xs text-muted-foreground">
-                  <TrendingUp className="size-3 text-primary" />
-                  {s.delta}
+                <p className="text-gradient-blue mt-2 text-4xl font-bold tracking-tight">
+                  {s.value}
                 </p>
+                <p className="mt-1 text-xs text-muted-foreground">{s.delta}</p>
               </div>
-              <span className="grid size-10 shrink-0 place-items-center rounded-xl bg-accent text-accent-foreground">
+              <span className="grid size-10 shrink-0 place-items-center rounded-xl bg-primary/10 text-primary">
                 <s.icon className="size-5" />
               </span>
             </CardContent>
@@ -95,31 +105,28 @@ function Dashboard() {
         ))}
       </div>
 
-      <div className="grid gap-6 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)]">
-        <Card className="rounded-2xl shadow-sm">
-          <CardHeader>
-            <CardTitle className="text-base">Quick actions</CardTitle>
-          </CardHeader>
-          <CardContent className="grid gap-3 sm:grid-cols-2">
-            {quickActions.map((a) => (
-              <Link
-                key={a.url}
-                to={a.url}
-                className="group flex items-start gap-3 rounded-xl border border-border p-4 transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:bg-accent/50 hover:shadow-sm"
-              >
-                <span className="grid size-9 shrink-0 place-items-center rounded-lg bg-primary/10 text-primary">
-                  <a.icon className="size-4" />
-                </span>
-                <span className="min-w-0">
-                  <span className="block truncate text-sm font-medium">{a.title}</span>
-                  <span className="block text-xs text-muted-foreground">{a.desc}</span>
-                </span>
+      <Card className="rounded-xl shadow-sm">
+        <CardHeader>
+          <CardTitle className="text-base">Quick actions</CardTitle>
+        </CardHeader>
+        <CardContent className="grid gap-3 sm:grid-cols-3">
+          {quickActions.map((a) => (
+            <Button
+              key={a.url}
+              asChild
+              className="h-auto justify-start whitespace-normal py-3 text-left transition-transform hover:-translate-y-0.5"
+            >
+              <Link to={a.url}>
+                <a.icon className="mr-2 size-4 shrink-0" />
+                {a.title}
               </Link>
-            ))}
-          </CardContent>
-        </Card>
+            </Button>
+          ))}
+        </CardContent>
+      </Card>
 
-        <Card className="rounded-2xl shadow-sm">
+      <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
+        <Card className="rounded-xl shadow-sm">
           <CardHeader>
             <CardTitle className="text-base">Recent activity</CardTitle>
           </CardHeader>
@@ -140,7 +147,36 @@ function Dashboard() {
             </ol>
           </CardContent>
         </Card>
+
+        <Card className="rounded-xl shadow-sm">
+          <CardHeader>
+            <CardTitle className="text-base">Weekly productivity — tickets closed</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="grid h-56 grid-cols-7 items-end gap-2 sm:gap-3">
+              {week.map((w) => (
+                <div key={w.day} className="flex h-full flex-col items-center justify-end gap-2">
+                  <span className="text-xs font-semibold text-primary">{w.value}</span>
+                  <div
+                    className="w-full rounded-t-md bg-gradient-to-t from-primary/50 to-primary transition-all hover:opacity-80"
+                    style={{ height: `${(w.value / max) * 100}%` }}
+                  />
+                  <span className="text-xs text-muted-foreground">{w.day}</span>
+                </div>
+              ))}
+            </div>
+            <p className="mt-4 flex items-center gap-2 text-xs text-muted-foreground">
+              <CheckCircle2 className="size-3.5 text-primary" />
+              83 tickets closed this week — 14% above your rolling average.
+            </p>
+          </CardContent>
+        </Card>
       </div>
+
+      <p className="flex items-center justify-center gap-2 text-xs text-muted-foreground">
+        <ShieldCheck className="size-3.5 text-primary" />
+        All AI output is drafted for a human technician to review before sending.
+      </p>
     </div>
   );
 }
