@@ -25,7 +25,7 @@ export const Route = createFileRoute("/tickets")({
       },
     ],
   }),
-  component: TicketsPage;
+  component: TicketsPage,
 });
 
 const solutionSteps = [
